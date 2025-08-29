@@ -3,23 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Para Ti ❤️</title>
+  <title>Para Alianmar ❤️</title>
   <meta name="theme-color" content="#ff4d6d" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="icons/heart-192.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Marcellus&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0b0b10;
-      --bg-2:#11121a;
-      --card:#171826;
-      --ink:#f7f7fb;
-      --muted:#c6c7d1;
-      --brand:#ff4d6d; /* rosa fuerte */
-      --brand-2:#ff8fa3; /* rosa claro */
-      --accent:#ffd166;  /* dorado suave */
-      --radius:20px;
-      --shadow:0 18px 50px rgba(0,0,0,.35);
+      --bg:#0b0b10; --bg-2:#11121a; --card:#171826; --ink:#f7f7fb; --muted:#c6c7d1;
+      --brand:#ff4d6d; --brand-2:#ff8fa3; --accent:#ffd166; --radius:20px; --shadow:0 18px 50px rgba(0,0,0,.35);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -32,64 +29,28 @@
       font-family:"DM Sans", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
       line-height:1.5;
     }
-    header{
-      position:relative;
-      padding: clamp(28px, 5vw, 56px) clamp(16px, 6vw, 72px);
-      text-align:center;
-      overflow:hidden;
-    }
-    .badge{
-      display:inline-flex; gap:.6rem; align-items:center; padding:.4rem .9rem;
-      border:1px solid rgba(255,255,255,.12); border-radius:999px; color:var(--muted);
-      backdrop-filter: blur(6px); background:rgba(255,255,255,.04);
-      font-size:.9rem;
-    }
-    h1{
-      margin:14px 0 6px 0;
-      font:700 clamp(28px, 6vw, 64px)/1.05 "Marcellus", serif;
-      letter-spacing:.5px;
-    }
+    header{position:relative; padding: clamp(28px, 5vw, 56px) clamp(16px, 6vw, 72px); text-align:center; overflow:hidden}
+    .badge{display:inline-flex; gap:.6rem; align-items:center; padding:.4rem .9rem; border:1px solid rgba(255,255,255,.12); border-radius:999px; color:var(--muted); backdrop-filter: blur(6px); background:rgba(255,255,255,.04); font-size:.9rem}
+    h1{margin:14px 0 6px 0; font:700 clamp(28px, 6vw, 64px)/1.05 "Marcellus", serif; letter-spacing:.5px}
     .subtitle{color:var(--muted); font-size:clamp(14px, 2.4vw, 18px)}
-    .heart{
-      width:22px;height:22px; display:inline-block; transform: translateY(2px);
-      background: conic-gradient(from 180deg at 50% 55%, #ffccd6, var(--brand));
-      clip-path: path("M12 21s-7-4.44-10-9c-2.1-3.11-.5-7.08 3-7.86 1.8-.39 3.66.36 5 1.86C11.34 4.5 13.2 3.75 15 4.14c3.5.78 5.1 4.75 3 7.86-3 4.56-10 9-10 9Z");
-      box-shadow:0 6px 16px rgba(255,77,109,.5);
-    }
+    .heart{width:22px;height:22px; display:inline-block; transform: translateY(2px); background: conic-gradient(from 180deg at 50% 55%, #ffccd6, var(--brand)); clip-path: path("M12 21s-7-4.44-10-9c-2.1-3.11-.5-7.08 3-7.86 1.8-.39 3.66.36 5 1.86C11.34 4.5 13.2 3.75 15 4.14c3.5.78 5.1 4.75 3 7.86-3 4.56-10 9-10 9Z"); box-shadow:0 6px 16px rgba(255,77,109,.5)}
 
-    /* Layout */
     .wrap{max-width:1100px; margin:0 auto; padding:0 clamp(16px, 4vw, 28px) 56px}
-    .grid{display:grid; gap:24px; grid-template-columns:1fr;}
-    @media (min-width:880px){
-      .grid{grid-template-columns: 1.3fr .9fr}
-    }
+    .grid{display:grid; gap:24px; grid-template-columns:1fr}
+    @media (min-width:880px){ .grid{grid-template-columns: 1.3fr .9fr} }
 
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding: clamp(16px, 2.8vw, 28px);
-    }
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); box-shadow:var(--shadow); padding: clamp(16px, 2.8vw, 28px); position:relative; overflow:hidden}
+    .card:after{content:""; position:absolute; inset:0; background:radial-gradient(600px 300px at -10% -10%, rgba(255,141,159,.08), transparent 60%); pointer-events:none}
+    .card:hover{transform: translateY(-2px); transition: transform .2s ease}
     .card h2{margin:.2rem 0 1rem; font:700 1.4rem/1.2 "DM Sans"}
 
-    /* Hero media */
-    .hero-img{
-      width:min(540px, 90%);
-      aspect-ratio: 4/3;
-      margin: 18px auto 0; border-radius: 24px;
-      background: url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=1400&auto=format&fit=crop') center/cover no-repeat;
-      border:1px solid rgba(255,255,255,.12);
-      box-shadow:0 20px 60px rgba(0,0,0,.4);
-    }
+    .hero-img{width:min(540px, 90%); aspect-ratio: 4/3; margin: 18px auto 0; border-radius: 24px; background: url('fotos/1.JPG') center/cover no-repeat; border:1px solid rgba(255,255,255,.12); box-shadow:0 20px 60px rgba(0,0,0,.4); will-change: transform}
 
-    /* Countdown */
     .countdown{display:flex; gap:10px; flex-wrap:wrap}
     .kpi{flex:1 1 110px; text-align:center; padding:16px; border-radius:16px; background:#12131b; border:1px solid rgba(255,255,255,.07)}
     .kpi b{display:block; font:700 clamp(22px, 4vw, 34px)/1 "Marcellus"; color:var(--brand)}
     .kpi span{color:var(--muted); font-size:.9rem}
 
-    /* Timeline */
     .timeline{position:relative; margin:12px 0 0}
     .timeline:before{content:""; position:absolute; left:12px; top:0; bottom:0; width:2px; background:linear-gradient(var(--brand), transparent)}
     .tl-item{position:relative; padding-left:38px; margin:16px 0}
@@ -97,72 +58,85 @@
     .tl-item h3{margin:0; font-weight:700}
     .tl-item p{margin:.35rem 0 0; color:var(--muted)}
 
-    /* Galería */
     .gallery{display:grid; gap:12px; grid-template-columns: repeat(2, 1fr)}
     @media (min-width:680px){.gallery{grid-template-columns: repeat(3, 1fr)}}
-    .gallery img{width:100%; aspect-ratio: 4/5; object-fit:cover; border-radius:16px; border:1px solid rgba(255,255,255,.1); cursor:pointer; transition: transform .2s ease}
-    .gallery img:hover{transform:translateY(-2px)}
+    .gallery img{width:100%; aspect-ratio: 4/5; object-fit:cover; border-radius:16px; border:1px solid rgba(255,255,255,.1); cursor:pointer; transition: transform .2s ease, box-shadow .2s ease}
+    .gallery img:hover{transform:translateY(-2px); box-shadow:0 12px 28px rgba(0,0,0,.35)}
 
-    /* Lightbox simple */
     .lightbox{position:fixed; inset:0; display:none; place-items:center; background:rgba(0,0,0,.72); backdrop-filter: blur(2px); z-index:60}
     .lightbox img{max-width:92vw; max-height:86vh; border-radius:18px; border:1px solid rgba(255,255,255,.2); box-shadow:0 20px 70px rgba(0,0,0,.6)}
 
-    /* Carta */
-    .letter{
-      font-size:1.05rem; color:#f2f1f7; line-height:1.7;
-      text-wrap: pretty;
-      text-shadow: 0 1px 0 rgba(0,0,0,.2);
-    }
+    .letter{font-size:1.08rem; color:#f2f1f7; line-height:1.8; text-wrap: pretty; text-shadow: 0 1px 0 rgba(0,0,0,.2)}
     .signature{margin-top:14px; color:var(--brand-2); font:700 1.1rem "Marcellus"}
 
-    /* Controles */
-    .controls{display:flex; gap:10px; flex-wrap:wrap}
-    .btn{
-      border:1px solid rgba(255,255,255,.16);
-      padding:.75rem 1rem; border-radius:14px;
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      color:var(--ink); cursor:pointer; font-weight:600; letter-spacing:.3px;
-    }
-    .btn:hover{transform: translateY(-1px)}
+    .notice{display:flex; align-items:center; gap:.6rem; padding:.6rem .8rem; border-radius:999px; width:fit-content; font-size:.9rem; color:#ffe; background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.12)}
+    .notice .dot{width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 6px rgba(255,209,102,.18)}
 
-    /* Editor flotante */
-    .editor{
-      position: fixed; right: 16px; bottom: 16px; z-index: 70;
-      width:min(380px, 92vw);
-      background: #12131b; border:1px solid rgba(255,255,255,.12);
-      border-radius:16px; padding:14px; box-shadow: var(--shadow);
-      display:none;
-    }
-    .editor label{display:block; font-size:.9rem; color:var(--muted); margin:.5rem 0 .25rem}
-    .editor input,.editor textarea{
-      width:100%; background:#0f1016; color:var(--ink); border:1px solid rgba(255,255,255,.12);
-      padding:.8rem .9rem; border-radius:12px; font:inherit;
-    }
-    .editor textarea{min-height:100px; resize:vertical}
+    .letter-cta{display:flex; gap:10px; margin-top:12px}
+    .btn{border:1px solid rgba(255,255,255,.16); padding:.7rem 1rem; border-radius:14px; background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); color:var(--ink); cursor:pointer; font-weight:600; letter-spacing:.3px}
+    .btn:hover{transform: translateY(-1px)}
 
     footer{padding:38px 16px; text-align:center; color:var(--muted)}
 
     /* Corazones flotando */
     .floaters{position:fixed; inset:0; pointer-events:none; z-index:1}
-    .floater{position:absolute; width:12px; height:12px; background:var(--brand); transform: rotate(45deg); opacity:.7; filter: drop-shadow(0 6px 8px rgba(255,77,109,.3));}
+    .floater{position:absolute; width:12px; height:12px; background:var(--brand); transform: rotate(45deg); opacity:.7; filter: drop-shadow(0 6px 8px rgba(255,77,109,.3))}
     .floater:before, .floater:after{content:""; position:absolute; width:12px; height:12px; background:var(--brand); border-radius:50%}
     .floater:before{left:-6px}
     .floater:after{top:-6px}
     @keyframes rise{to{transform: translateY(-120vh) rotate(360deg); opacity:0}}
+
+    /* ===== Gate (contraseña) ===== */
+    .gate{position:fixed; inset:0; display:grid; place-items:center; background:
+      radial-gradient(1200px 800px at 80% -10%, rgba(255,77,109,.16), transparent 55%),
+      radial-gradient(900px 700px at -10% 90%, rgba(255,143,163,.14), transparent 55%),
+      linear-gradient(180deg, #0a0a0f 0%, #0e111a 100%);
+      backdrop-filter: blur(4px); z-index:100; transition: opacity .35s ease}
+    .gate.off{opacity:0; pointer-events:none}
+    .gate-card{width:min(420px, 92vw); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.12); border-radius:22px; padding:22px; box-shadow:0 20px 80px rgba(0,0,0,.5); text-align:center}
+    .gate-card h2{margin:.4rem 0; font:700 1.6rem "Marcellus"}
+    .gate-sub{color:var(--muted); margin-top:-4px}
+    .big-heart{width:44px; height:44px; margin:0 auto 10px; background: conic-gradient(from 180deg at 50% 55%, #ffccd6, var(--brand)); clip-path: path("M12 21s-7-4.44-10-9c-2.1-3.11-.5-7.08 3-7.86 1.8-.39 3.66.36 5 1.86C11.34 4.5 13.2 3.75 15 4.14c3.5.78 5.1 4.75 3 7.86-3 4.56-10 9-10 9Z"); filter: drop-shadow(0 6px 16px rgba(255,77,109,.55))}
+    .pin{position:relative; margin:14px auto 6px; width:min(360px, 86vw)}
+    .pin input{position:absolute; inset:0; opacity:0; pointer-events:auto}
+    .boxes{display:grid; grid-template-columns:repeat(8,1fr); gap:10px}
+    .box{height:48px; border-radius:12px; border:1px solid rgba(255,255,255,.2); background:rgba(255,255,255,.04); display:grid; place-items:center; font-size:1.2rem; color:#fff}
+    .box.filled{background:rgba(255,255,255,.1)}
+    .gate-remember{display:flex; align-items:center; gap:.5rem; justify-content:center; color:var(--muted); font-size:.9rem; margin-top:6px}
+    .gate .error{color:#ffb4c1; min-height:1.2em; margin-top:6px}
+    @keyframes shake{10%, 90% {transform: translateX(-1px);} 20%, 80% {transform: translateX(2px);} 30%, 50%, 70% {transform: translateX(-4px);} 40%, 60% {transform: translateX(4px);} }
+    .shake{animation:shake .45s}
   </style>
 </head>
 <body>
   <div class="floaters" id="floaters"></div>
 
+  <!-- Gate de contraseña -->
+  <div class="gate" id="gate" aria-modal="true" role="dialog">
+    <div class="gate-card">
+      <div class="big-heart"></div>
+      <h2>Hola, Alianmar ✨</h2>
+      <p class="gate-sub">Ingresa el código para entrar</p>
+      <div class="pin" aria-label="Ingresa 8 dígitos">
+        <input id="pin" type="password" inputmode="numeric" maxlength="8" autocomplete="one-time-code" aria-label="Código" />
+        <div class="boxes">
+          <span class="box"></span><span class="box"></span><span class="box"></span><span class="box"></span>
+          <span class="box"></span><span class="box"></span><span class="box"></span><span class="box"></span>
+        </div>
+      </div>
+      <div class="gate-remember"><input id="remember" type="checkbox" checked> Recordarme en este dispositivo</div>
+      <div class="error" id="gateError"></div>
+    </div>
+  </div>
+
   <header class="wrap">
     <div class="badge"><span class="heart"></span> Hecho con amor</div>
-    <h1>Para <span id="nombrePareja">Mi Amor</span> ✨</h1>
+    <h1>Para <span id="nombrePareja">Alianmar</span> ✨</h1>
     <p class="subtitle">Desde <span id="fechaInicioHuman">—</span> contando cada risa, cada abrazo y cada aventura contigo.</p>
-    <div class="hero-img" aria-label="Foto de nosotros"></div>
+    <div class="hero-img" id="hero" aria-label="Foto de nosotros"></div>
   </header>
 
   <main class="wrap grid" id="contenido">
-    <!-- Columna izquierda -->
     <section class="card">
       <h2>Cuenta regresiva para nuestro próximo aniversario</h2>
       <div class="countdown" id="countdown">
@@ -171,97 +145,75 @@
         <div class="kpi"><b id="cd-min">—</b><span>Minutos</span></div>
         <div class="kpi"><b id="cd-sec">—</b><span>Segundos</span></div>
       </div>
-      <div class="controls" style="margin-top:12px">
-        <button class="btn" id="btnConfetti">🎉 Celebrar</button>
-        <button class="btn" id="btnEditar">✏️ Editar</button>
-      </div>
     </section>
 
     <section class="card">
       <h2>Nuestra playlist</h2>
-      <p class="subtitle">(Opcional) Reemplaza el enlace por tu playlist favorita de Spotify.</p>
       <div style="border-radius:14px; overflow:hidden; border:1px solid rgba(255,255,255,.12)">
-        <!-- Reemplaza el src por el de tu playlist -->
-        <iframe style="width:100%; height:352px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX50QitC6Oqtn?utm_source=generator" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <iframe style="width:100%; height:352px" src="https://open.spotify.com/embed/playlist/3MZW07dyWBrGTTksxn146T?utm_source=generator" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
       </div>
     </section>
 
-    <!-- Columna derecha -->
     <section class="card" style="grid-column:1/-1">
       <h2>Nuestra historia</h2>
-      <div class="timeline" id="timeline">
-        <!-- Items renderizados por JS -->
-      </div>
+      <div class="timeline" id="timeline"></div>
     </section>
 
     <section class="card" style="grid-column:1/-1">
       <h2>Galería</h2>
-      <p class="subtitle">Pon tus fotos favoritas reemplazando las URLs.</p>
       <div class="gallery" id="galeria">
-        <img src="https://images.unsplash.com/photo-1544211417-3b3952b9b3b4?q=80&w=1200&auto=format&fit=crop" alt="Nosotros 1" />
-        <img src="https://images.unsplash.com/photo-1545920875-1a1a1c85a879?q=80&w=1200&auto=format&fit=crop" alt="Nosotros 2" />
-        <img src="https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?q=80&w=1200&auto=format&fit=crop" alt="Nosotros 3" />
-        <img src="https://images.unsplash.com/photo-1496302662116-35cc4f36df92?q=80&w=1200&auto=format&fit=crop" alt="Nosotros 4" />
-        <img src="https://images.unsplash.com/photo-1498429089284-41f8cf3ffd39?q=80&w=1200&auto=format&fit=crop" alt="Nosotros 5" />
-        <img src="https://images.unsplash.com/photo-1511935456800-4f77546b3cde?q=80&w=1200&auto=format&fit=crop" alt="Nosotros 6" />
+        <img src="fotos/1.JPG" alt="Nosotros 1" />
+        <img src="fotos/2.JPG" alt="Nosotros 2" />
+        <img src="fotos/3.JPG" alt="Nosotros 3" />
+        <img src="fotos/4.jpg" alt="Nosotros 4" />
+        <img src="fotos/5.JPG" alt="Nosotros 5" />
+        <img src="fotos/6.JPG" alt="Nosotros 6" />
+        <img src="fotos/7.JPG" alt="Nosotros 7" />
+        <img src="fotos/8.jpg" alt="Nosotros 8" />
+        <img src="fotos/9.jpg" alt="Nosotros 9" />
+        <img src="fotos/10.jpg" alt="Nosotros 10" />
+        <img src="fotos/11.jpg" alt="Nosotros 11" />
+        <img src="fotos/12.jpg" alt="Nosotros 12" />
       </div>
     </section>
 
     <section class="card" style="grid-column:1/-1">
-      <h2>Una carta para ti</h2>
-      <div class="letter" id="carta">
-        Gracias por llegar a mi vida y hacer que todo sea más bonito. Eres mi lugar favorito y mi aventura preferida. Contigo, los días pasan más rápido y los recuerdos se quedan para siempre. 💫
-        <div class="signature">– <span id="nombreAutor">Tu Nombre</span></div>
+      <div class="notice"><span class="dot"></span> Entra cada día para una nueva carta. <strong>Guárdalas</strong> porque se borran. ✨</div>
+      <h2 style="margin-top:10px">La carta de hoy</h2>
+      <div class="letter" id="carta"></div>
+      <div class="letter-cta">
+        <button class="btn" id="btnGuardarCarta">Guardar como .txt</button>
+        <button class="btn" id="btnCopiarCarta">Copiar</button>
       </div>
+      <div class="signature">– <span id="nombreAutor">Benjamín</span></div>
     </section>
   </main>
 
-  <!-- Lightbox -->
   <div class="lightbox" id="lightbox" aria-modal="true" role="dialog">
     <img alt="Foto ampliada" id="lightboxImg" />
   </div>
 
-  <!-- Editor -->
-  <aside class="editor" id="editor">
-    <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:6px">
-      <strong>Editar datos</strong>
-      <button class="btn" id="btnCerrarEditor">Cerrar</button>
-    </div>
-    <label>Tu nombre</label>
-    <input id="inpAutor" placeholder="Tu nombre" />
-    <label>Nombre de tu pareja</label>
-    <input id="inpPareja" placeholder="Su nombre" />
-    <label>Fecha de inicio (aniversario, primer beso, etc.)</label>
-    <input id="inpFecha" type="date" />
-    <label>Texto de la carta</label>
-    <textarea id="inpCarta" placeholder="Escribe algo bonito…"></textarea>
-    <div style="display:flex; gap:10px; margin-top:10px">
-      <button class="btn" id="btnGuardar">Guardar</button>
-      <button class="btn" id="btnBorrar">Borrar datos</button>
-    </div>
-    <p class="subtitle" style="margin-top:8px">Se guarda solo en este navegador (LocalStorage). Para modo sorpresa, abre con <code>?sorpresa=1</code> para ocultar el botón Editar.</p>
-  </aside>
-
   <footer>
-    Hecho con ❤️ por <span id="autorFooter">Tu Nombre</span> · <span id="anio"></span>
+    Hecho con ❤️ por <span id="autorFooter">Benjamín</span> · <span id="anio"></span>
   </footer>
 
   <script>
-    // ====== UTIL ======
     const $ = (sel) => document.querySelector(sel);
     const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 
-    // ====== Estado / Persistencia ======
-    const LS_KEY = 'pagina-novia-v1';
-    const estado = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
+    // ===== PWA: registrar SW =====
+    if ('serviceWorker' in navigator){
+      window.addEventListener('load', ()=>{
+        navigator.serviceWorker.register('./service-worker.js').catch(()=>{});
+      });
+    }
 
-    // Valores por defecto
+    // ===== Datos fijos =====
     const datos = {
-      autor: estado.autor || 'Tu Nombre',
-      pareja: estado.pareja || 'Mi Amor',
-      fechaInicio: estado.fechaInicio || '2025-05-03', // hoy
-      carta: estado.carta || 'Gracias por llegar a mi vida y hacer que todo sea más bonito. Eres mi lugar favorito y mi aventura preferida. Contigo, los días pasan más rápido y los recuerdos se quedan para siempre. 💫',
-      timeline: estado.timeline || [
+      autor: 'Benjamín',
+      pareja: 'Alianmar',
+      fechaInicio: '2025-05-03',
+      timeline: [
         {fecha:'03 de mayo', detalle:'Empezamos a pololear 💘'},
         {fecha:'Primera cita', detalle:'Ese día supe que algo especial empezaba 💞'},
         {fecha:'Nuestra canción', detalle:'La pusiste y sonreíste. Desde entonces es nuestra.'},
@@ -269,14 +221,45 @@
       ]
     };
 
-    function guardar(){ localStorage.setItem(LS_KEY, JSON.stringify(datos)); }
+    // ===== Cartas diarias =====
+    const CARTAS = [
+      'Eres mi pedacito de paz en el caos. Gracias por existir. 💖',
+      'Si te miro, se me olvida el resto del mundo. 🌍✨',
+      'Contigo, hasta el silencio se siente bonito.',
+      'Hoy vuelvo a elegirte, como todos los días. 💞',
+      'Tu risa es mi lugar favorito. 😄',
+      'Cuando te abrazo, todo encaja. 🤍',
+      'Si estás tú, cualquier lugar es hogar.',
+      'Me haces querer ser mi mejor versión. ✨',
+      'Gracias por llegar a mi vida y hacer que todo sea más bonito, aunque te llegue a cansar. Se que te puedo llegar a cansar pero de verdad te amo con todo mi corazon, de verdad eres mi lugar favorito y mi aventura preferida. Contigo, los días pasan más rápido y los recuerdos se quedan para siempre como este amor que siento que nunca se ira y siempre se quedara con nosotros. 💫',
+      'Gracias por el 03 de mayo y por cada día después.'
+    ];
 
-    // ====== Render ======
+    function startOfDayUTC(date){ return Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()); }
+    function daysBetweenUTC(a,b){ return Math.floor((startOfDayUTC(b)-startOfDayUTC(a))/86400000); }
+    function cartaDeHoy(){
+      const inicio = new Date(datos.fechaInicio+'T00:00:00Z');
+      const hoy = new Date();
+      const idx = daysBetweenUTC(inicio, hoy) % CARTAS.length;
+      return CARTAS[idx];
+    }
+
+    function guardarCartaComoTXT(texto){
+      const blob = new Blob([texto], {type:'text/plain;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href=url; a.download=`carta_${new Date().toISOString().slice(0,10)}.txt`;
+      document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    }
+
+    async function copiarCarta(texto){
+      try{ await navigator.clipboard.writeText(texto);}catch(e){ alert('No se pudo copiar.'); }
+    }
+
+    // ===== Render =====
     function formatearFechaHumana(iso){
-      try{
-        const d = new Date(iso + 'T00:00:00');
-        return d.toLocaleDateString(undefined, {year:'numeric', month:'long', day:'numeric'});
-      }catch{ return iso }
+      const d = new Date(iso + 'T00:00:00');
+      return d.toLocaleDateString(undefined, {year:'numeric', month:'long', day:'numeric'});
     }
 
     function render(){
@@ -284,23 +267,25 @@
       $('#autorFooter').textContent = datos.autor;
       $('#nombrePareja').textContent = datos.pareja;
       $('#fechaInicioHuman').textContent = formatearFechaHumana(datos.fechaInicio);
-      $('#carta').firstChild.nodeValue = datos.carta + ' ';
-      // timeline
+
+      // Timeline
       const tl = $('#timeline'); tl.innerHTML='';
       datos.timeline.forEach(it=>{
-        const el = document.createElement('div');
-        el.className='tl-item';
-        el.innerHTML = `<div class="dot"></div><h3>${it.fecha}</h3><p>${it.detalle}</p>`;
-        tl.appendChild(el);
+        const el = document.createElement('div'); el.className='tl-item'; el.innerHTML = `<div class="dot"></div><h3>${it.fecha}</h3><p>${it.detalle}</p>`; tl.appendChild(el);
       });
+
+      // Carta del día
+      const carta = cartaDeHoy();
+      $('#carta').textContent = carta;
+
+      // Contador
       actualizarCountdown();
       $('#anio').textContent = new Date().getFullYear();
     }
 
-    // ====== Countdown al próximo aniversario ======
+    // ===== Countdown =====
     function proximoAniversario(baseISO){
-      const base = new Date(baseISO + 'T00:00:00');
-      const ahora = new Date();
+      const base = new Date(baseISO + 'T00:00:00'); const ahora = new Date();
       let objetivo = new Date(ahora.getFullYear(), base.getMonth(), base.getDate());
       if(objetivo < ahora) objetivo.setFullYear(objetivo.getFullYear()+1);
       return objetivo;
@@ -312,7 +297,6 @@
       function tick(){
         const obj = proximoAniversario(datos.fechaInicio);
         const diff = (obj - new Date());
-        if(diff <= 0){ renderConfetti(); }
         const seg = Math.max(0, Math.floor(diff/1000));
         const d = Math.floor(seg/86400);
         const h = Math.floor((seg%86400)/3600);
@@ -320,84 +304,66 @@
         const s = Math.floor(seg%60);
         $('#cd-dias').textContent=d; $('#cd-horas').textContent=h; $('#cd-min').textContent=m; $('#cd-sec').textContent=s;
       }
-      tick();
-      tInt = setInterval(tick, 1000);
+      tick(); tInt = setInterval(tick, 1000);
     }
 
-    // ====== Lightbox simple ======
-    $$('#galeria img').forEach(img=>{
-      img.addEventListener('click', ()=>{
-        $('#lightboxImg').src = img.src;
-        $('#lightbox').style.display='grid';
-      });
-    });
-    $('#lightbox').addEventListener('click', (e)=>{
-      if(e.target.id==='lightbox' || e.target.id==='lightboxImg') $('#lightbox').style.display='none';
-    });
+    // ===== Lightbox =====
+    $$('#galeria img').forEach(img=>{ img.addEventListener('click', ()=>{ $('#lightboxImg').src = img.src; $('#lightbox').style.display='grid'; }); });
+    $('#lightbox').addEventListener('click', (e)=>{ if(e.target.id==='lightbox' || e.target.id==='lightboxImg') $('#lightbox').style.display='none'; });
 
-    // ====== Editor ======
-    const editor = $('#editor');
-    $('#btnEditar').addEventListener('click', ()=> editor.style.display='block');
-    $('#btnCerrarEditor').addEventListener('click', ()=> editor.style.display='none');
-    $('#btnGuardar').addEventListener('click', ()=>{
-      datos.autor = $('#inpAutor').value || datos.autor;
-      datos.pareja = $('#inpPareja').value || datos.pareja;
-      datos.fechaInicio = $('#inpFecha').value || datos.fechaInicio;
-      datos.carta = $('#inpCarta').value || datos.carta;
-      guardar(); render(); editor.style.display='none';
+    // ===== Hero parallax =====
+    const hero = document.getElementById('hero');
+    hero.addEventListener('mousemove', (e)=>{
+      const r = hero.getBoundingClientRect();
+      const x = (e.clientX - r.left)/r.width - .5;
+      const y = (e.clientY - r.top)/r.height - .5;
+      hero.style.transform = `perspective(900px) rotateY(${x*4}deg) rotateX(${ -y*4}deg) scale(1.01)`;
     });
-    $('#btnBorrar').addEventListener('click', ()=>{
-      localStorage.removeItem(LS_KEY); location.reload();
-    });
+    hero.addEventListener('mouseleave', ()=>{ hero.style.transform='none'; });
 
-    // Precargar inputs
-    function precargarInputs(){
-      $('#inpAutor').value = datos.autor;
-      $('#inpPareja').value = datos.pareja;
-      $('#inpFecha').value = datos.fechaInicio;
-      $('#inpCarta').value = datos.carta;
-    }
-
-    // Ocultar botón Editar en modo sorpresa (?sorpresa=1)
-    if(new URLSearchParams(location.search).get('sorpresa')==='1'){
-      $('#btnEditar').style.display='none';
-    }
-
-    // ====== Corazones flotantes + confetti ======
+    // ===== Corazones flotantes =====
     const floaters = $('#floaters');
-    function crearFloater(){
-      const el = document.createElement('div');
-      el.className = 'floater';
-      const x = Math.random()*100; const dur = 8 + Math.random()*6; const size = 8 + Math.random()*14;
-      el.style.left = x+'vw';
-      el.style.bottom = '-20px';
-      el.style.width = el.style.height = size+'px';
-      el.style.animation = `rise ${dur}s linear forwards`;
-      floaters.appendChild(el);
-      setTimeout(()=> el.remove(), dur*1000);
-    }
+    function crearFloater(){ const el = document.createElement('div'); el.className = 'floater'; const x = Math.random()*100; const dur = 8 + Math.random()*6; const size = 8 + Math.random()*14; el.style.left = x+'vw'; el.style.bottom = '-20px'; el.style.width = el.style.height = size+'px'; el.style.animation = `rise ${dur}s linear forwards`; floaters.appendChild(el); setTimeout(()=> el.remove(), dur*1000); }
     setInterval(()=>{ if(document.hidden) return; if(Math.random()<.45) crearFloater(); }, 600);
 
-    function renderConfetti(){
-      const n=80;
-      for(let i=0;i<n;i++){
-        const p=document.createElement('div');
-        p.style.position='fixed'; p.style.left=Math.random()*100+'vw'; p.style.top='-10px';
-        p.style.width=p.style.height= (6+Math.random()*6)+'px';
-        p.style.background = i%2? 'var(--brand)' : 'var(--accent)';
-        p.style.opacity=.9; p.style.transform=`rotate(${Math.random()*360}deg)`;
-        p.style.transition='transform 1.2s ease-out, top 1.2s ease-out, opacity 1.2s ease-out';
-        document.body.appendChild(p);
-        requestAnimationFrame(()=>{
-          p.style.top = '110vh'; p.style.transform = `translateY(0) rotate(${360+Math.random()*360}deg)`; p.style.opacity=.95;
-        });
-        setTimeout(()=> p.remove(), 1400);
+    // ===== Gate (contraseña) =====
+    const PASS = '03052024';
+    const gate = $('#gate');
+    const pinInput = $('#pin');
+    const boxes = Array.from(document.querySelectorAll('.pin .box'));
+    const errorEl = $('#gateError');
+
+    function syncBoxes(){
+      const v = pinInput.value;
+      boxes.forEach((b,i)=>{ b.classList.toggle('filled', i < v.length); b.textContent = i < v.length ? '•' : ''; });
+    }
+    function isUnlocked(){ return localStorage.getItem('love-unlocked') || sessionStorage.getItem('love-unlocked'); }
+    function unlock(){ gate.classList.add('off'); setTimeout(()=> gate.remove(), 400); }
+
+    function tryUnlock(){
+      if(pinInput.value === PASS){
+        const remember = document.getElementById('remember').checked;
+        (remember ? localStorage : sessionStorage).setItem('love-unlocked','1');
+        unlock();
+      }else{
+        gate.classList.add('shake'); errorEl.textContent='Código incorrecto';
+        setTimeout(()=>{ gate.classList.remove('shake'); errorEl.textContent=''; }, 700);
+        pinInput.value=''; syncBoxes();
       }
     }
-    $('#btnConfetti').addEventListener('click', renderConfetti);
 
-    // ====== Init ======
-    render(); precargarInputs();
+    pinInput.addEventListener('input', ()=>{ pinInput.value = pinInput.value.replace(/\D/g,'').slice(0,8); syncBoxes(); if(pinInput.value.length===8) tryUnlock(); });
+    boxes.forEach(b=> b.addEventListener('click', ()=> pinInput.focus()));
+    gate.addEventListener('keydown', (e)=>{ if(e.key==='Enter') tryUnlock(); });
+
+    if(isUnlocked()){ gate.style.display='none'; }
+    else{ pinInput.focus(); }
+
+    // ===== Botones carta =====
+    $('#btnGuardarCarta').addEventListener('click', ()=> guardarCartaComoTXT($('#carta').textContent));
+    $('#btnCopiarCarta').addEventListener('click', ()=> copiarCarta($('#carta').textContent));
+
+    render();
   </script>
 </body>
 </html>
