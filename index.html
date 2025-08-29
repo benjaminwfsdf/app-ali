@@ -2,314 +2,402 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Para Mi Amor 💌</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Para Ti ❤️</title>
+  <meta name="theme-color" content="#ff4d6d" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Marcellus&display=swap" rel="stylesheet">
   <style>
-    body {
-      background: #ffeef2;
-      font-family: 'Comic Sans MS', cursive;
-      color: #b30059;
-      text-align: center;
-      padding: 20px;
+    :root{
+      --bg:#0b0b10;
+      --bg-2:#11121a;
+      --card:#171826;
+      --ink:#f7f7fb;
+      --muted:#c6c7d1;
+      --brand:#ff4d6d; /* rosa fuerte */
+      --brand-2:#ff8fa3; /* rosa claro */
+      --accent:#ffd166;  /* dorado suave */
+      --radius:20px;
+      --shadow:0 18px 50px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(255,77,109,.12), transparent 55%),
+                  radial-gradient(900px 700px at -10% 90%, rgba(255,143,163,.1), transparent 55%),
+                  linear-gradient(180deg, var(--bg) 0%, #0d0e15 100%);
+      color:var(--ink);
+      font-family:"DM Sans", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
+      line-height:1.5;
+    }
+    header{
+      position:relative;
+      padding: clamp(28px, 5vw, 56px) clamp(16px, 6vw, 72px);
+      text-align:center;
+      overflow:hidden;
+    }
+    .badge{
+      display:inline-flex; gap:.6rem; align-items:center; padding:.4rem .9rem;
+      border:1px solid rgba(255,255,255,.12); border-radius:999px; color:var(--muted);
+      backdrop-filter: blur(6px); background:rgba(255,255,255,.04);
+      font-size:.9rem;
+    }
+    h1{
+      margin:14px 0 6px 0;
+      font:700 clamp(28px, 6vw, 64px)/1.05 "Marcellus", serif;
+      letter-spacing:.5px;
+    }
+    .subtitle{color:var(--muted); font-size:clamp(14px, 2.4vw, 18px)}
+    .heart{
+      width:22px;height:22px; display:inline-block; transform: translateY(2px);
+      background: conic-gradient(from 180deg at 50% 55%, #ffccd6, var(--brand));
+      clip-path: path("M12 21s-7-4.44-10-9c-2.1-3.11-.5-7.08 3-7.86 1.8-.39 3.66.36 5 1.86C11.34 4.5 13.2 3.75 15 4.14c3.5.78 5.1 4.75 3 7.86-3 4.56-10 9-10 9Z");
+      box-shadow:0 6px 16px rgba(255,77,109,.5);
     }
 
-    h1 {
-      font-size: 2.5em;
+    /* Layout */
+    .wrap{max-width:1100px; margin:0 auto; padding:0 clamp(16px, 4vw, 28px) 56px}
+    .grid{display:grid; gap:24px; grid-template-columns:1fr;}
+    @media (min-width:880px){
+      .grid{grid-template-columns: 1.3fr .9fr}
     }
 
-    h2 {
-      margin-top: 40px;
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding: clamp(16px, 2.8vw, 28px);
+    }
+    .card h2{margin:.2rem 0 1rem; font:700 1.4rem/1.2 "DM Sans"}
+
+    /* Hero media */
+    .hero-img{
+      width:min(540px, 90%);
+      aspect-ratio: 4/3;
+      margin: 18px auto 0; border-radius: 24px;
+      background: url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=1400&auto=format&fit=crop') center/cover no-repeat;
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:0 20px 60px rgba(0,0,0,.4);
     }
 
-    .section {
-      margin: 30px 0;
-    }
+    /* Countdown */
+    .countdown{display:flex; gap:10px; flex-wrap:wrap}
+    .kpi{flex:1 1 110px; text-align:center; padding:16px; border-radius:16px; background:#12131b; border:1px solid rgba(255,255,255,.07)}
+    .kpi b{display:block; font:700 clamp(22px, 4vw, 34px)/1 "Marcellus"; color:var(--brand)}
+    .kpi span{color:var(--muted); font-size:.9rem}
 
-    details.letter {
-      background: #fff0f5;
-      border: 2px dashed #b30059;
-      padding: 15px;
-      margin: 15px auto;
-      width: 90%;
-      max-width: 700px;
-      border-radius: 12px;
-      text-align: left;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
+    /* Timeline */
+    .timeline{position:relative; margin:12px 0 0}
+    .timeline:before{content:""; position:absolute; left:12px; top:0; bottom:0; width:2px; background:linear-gradient(var(--brand), transparent)}
+    .tl-item{position:relative; padding-left:38px; margin:16px 0}
+    .dot{position:absolute; left:7px; top:6px; width:10px; height:10px; background:var(--brand); border-radius:999px; box-shadow:0 0 0 5px rgba(255,77,109,.18)}
+    .tl-item h3{margin:0; font-weight:700}
+    .tl-item p{margin:.35rem 0 0; color:var(--muted)}
 
-    details summary {
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 1.1em;
-      color: #b30059;
-      margin-bottom: 10px;
-    }
+    /* Galería */
+    .gallery{display:grid; gap:12px; grid-template-columns: repeat(2, 1fr)}
+    @media (min-width:680px){.gallery{grid-template-columns: repeat(3, 1fr)}}
+    .gallery img{width:100%; aspect-ratio: 4/5; object-fit:cover; border-radius:16px; border:1px solid rgba(255,255,255,.1); cursor:pointer; transition: transform .2s ease}
+    .gallery img:hover{transform:translateY(-2px)}
 
-    details p {
-      white-space: pre-wrap;
-      line-height: 1.6;
-      margin: 10px 0 0 0;
-    }
+    /* Lightbox simple */
+    .lightbox{position:fixed; inset:0; display:none; place-items:center; background:rgba(0,0,0,.72); backdrop-filter: blur(2px); z-index:60}
+    .lightbox img{max-width:92vw; max-height:86vh; border-radius:18px; border:1px solid rgba(255,255,255,.2); box-shadow:0 20px 70px rgba(0,0,0,.6)}
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 15px;
-      padding: 20px;
-      max-width: 900px;
-      margin: auto;
+    /* Carta */
+    .letter{
+      font-size:1.05rem; color:#f2f1f7; line-height:1.7;
+      text-wrap: pretty;
+      text-shadow: 0 1px 0 rgba(0,0,0,.2);
     }
+    .signature{margin-top:14px; color:var(--brand-2); font:700 1.1rem "Marcellus"}
 
-    .gallery img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease;
+    /* Controles */
+    .controls{display:flex; gap:10px; flex-wrap:wrap}
+    .btn{
+      border:1px solid rgba(255,255,255,.16);
+      padding:.75rem 1rem; border-radius:14px;
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      color:var(--ink); cursor:pointer; font-weight:600; letter-spacing:.3px;
     }
+    .btn:hover{transform: translateY(-1px)}
 
-    .gallery img:hover {
-      transform: scale(1.05);
+    /* Editor flotante */
+    .editor{
+      position: fixed; right: 16px; bottom: 16px; z-index: 70;
+      width:min(380px, 92vw);
+      background: #12131b; border:1px solid rgba(255,255,255,.12);
+      border-radius:16px; padding:14px; box-shadow: var(--shadow);
+      display:none;
     }
+    .editor label{display:block; font-size:.9rem; color:var(--muted); margin:.5rem 0 .25rem}
+    .editor input,.editor textarea{
+      width:100%; background:#0f1016; color:var(--ink); border:1px solid rgba(255,255,255,.12);
+      padding:.8rem .9rem; border-radius:12px; font:inherit;
+    }
+    .editor textarea{min-height:100px; resize:vertical}
+
+    footer{padding:38px 16px; text-align:center; color:var(--muted)}
+
+    /* Corazones flotando */
+    .floaters{position:fixed; inset:0; pointer-events:none; z-index:1}
+    .floater{position:absolute; width:12px; height:12px; background:var(--brand); transform: rotate(45deg); opacity:.7; filter: drop-shadow(0 6px 8px rgba(255,77,109,.3));}
+    .floater:before, .floater:after{content:""; position:absolute; width:12px; height:12px; background:var(--brand); border-radius:50%}
+    .floater:before{left:-6px}
+    .floater:after{top:-6px}
+    @keyframes rise{to{transform: translateY(-120vh) rotate(360deg); opacity:0}}
   </style>
 </head>
 <body>
-  <h1>💖 Para la Mujer Más Especial 💖</h1>
+  <div class="floaters" id="floaters"></div>
 
-  <div class="section">
-    <h2>💌 Cartas de Amor</h2>
+  <header class="wrap">
+    <div class="badge"><span class="heart"></span> Hecho con amor</div>
+    <h1>Para <span id="nombrePareja">Mi Amor</span> ✨</h1>
+    <p class="subtitle">Desde <span id="fechaInicioHuman">—</span> contando cada risa, cada abrazo y cada aventura contigo.</p>
+    <div class="hero-img" aria-label="Foto de nosotros"></div>
+  </header>
 
-    <details class="letter" open>
-      <summary>📜 Carta 1 - Mi vida entera</summary>
-      <p>queria decirte lo feliz que me haces y lo enamorado que estoy de usted mivida, que eres la mejor novia, hija, amiga, compañera eres la mejor en todo miamor y seras la mejor en todo lo que estes tu, cada cosa es mucho mas hermosa si usted esta a mi lado acompañándome, si te soy sincero miamor siento que te e dicho todo pero a la vez nada, ya no c como expresarte mas mis sentimientos miamor ya que parezco disco rayado repitiendo lo mismo.
+  <main class="wrap grid" id="contenido">
+    <!-- Columna izquierda -->
+    <section class="card">
+      <h2>Cuenta regresiva para nuestro próximo aniversario</h2>
+      <div class="countdown" id="countdown">
+        <div class="kpi"><b id="cd-dias">—</b><span>Días</span></div>
+        <div class="kpi"><b id="cd-horas">—</b><span>Horas</span></div>
+        <div class="kpi"><b id="cd-min">—</b><span>Minutos</span></div>
+        <div class="kpi"><b id="cd-sec">—</b><span>Segundos</span></div>
+      </div>
+      <div class="controls" style="margin-top:12px">
+        <button class="btn" id="btnConfetti">🎉 Celebrar</button>
+        <button class="btn" id="btnEditar">✏️ Editar</button>
+      </div>
+    </section>
 
-Eres mi novia, mi crush, mi mejor amiga, mi compañera, la mujer que me pone nervioso, la que me pone feliz, eres todo para mi, perdón si aveces te frustro o te estreso por no poder decirte porque estoy mal y me siento mal porque es obvio que te afecta y no me gusta verte mal porque si tu lloras o estas mal es como si mi mundo entero se derrumbase encima mío, quiero todo contigo miamor desde lo mas romántico hasta lo mas indecente pero solo contigo miamor, eres y seras el Amor de mivida, la niña de mis sueños, la que me pone nervioso quiero ser tu novio toda la vida miamor no te quiero dejar ir nunca se que repito mucho la palabra miamor pero me gusta llamarte asi es como tu apodo.
+    <section class="card">
+      <h2>Nuestra playlist</h2>
+      <p class="subtitle">(Opcional) Reemplaza el enlace por tu playlist favorita de Spotify.</p>
+      <div style="border-radius:14px; overflow:hidden; border:1px solid rgba(255,255,255,.12)">
+        <!-- Reemplaza el src por el de tu playlist -->
+        <iframe style="width:100%; height:352px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX50QitC6Oqtn?utm_source=generator" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      </div>
+    </section>
 
-Concluyendo todo esto miamor estos 3 meses han sido los mejores de mi vida miamor, desde que soy tu novio soy el hombre mas feliz del mundo miamor ninguna de las cosas que hago explica en totalidad lo que siento por ti ni siquiera la palabra te amo miamor porque lo que siento hacia ti es mucho mas grande que eso miamor es infinito e inagotable y espero que estes conmigo toda la vida porque yo si estare a tu lado toda la vida porque de verdad te amo mucho miamor y siempre te amare, quiero que seas mi esposa y la madre de mis hijos se que no expresa todos mis sentimientos pero igual lo dire, te amo miamor demasiado asi muchisimo eres lo que mas e amado en mi Vida miamor y siempre te amare, me siento muy afortunado de ser tu novio de verdad no quiero dejarte ir nunca miamor, eres todo para mi, quiero casarme contigo, tener hijos, hacer todo pero solo contigo miamor ya que de verdad te amo y te amare mas que a nada en el mundo, eres la mejor novia que podría tener de verdad me haces muy feliz miamor, te amo te amo te amo, quiero estar toda la vida a tu lado, quiero morir a tu lado así de la mano, estaré contigo incluso después de la muerte miamor, me siento muy afortunado de tener una novia tan hermosa, inteligente y que de verdad siento que me amas y yo de verdad te amo con todo mi corazón, eres el amor de mi vida, mi hilo rojo, mi media naranja, no quiero separarme nunca de ti &lt;3</p>
-    </details>
+    <!-- Columna derecha -->
+    <section class="card" style="grid-column:1/-1">
+      <h2>Nuestra historia</h2>
+      <div class="timeline" id="timeline">
+        <!-- Items renderizados por JS -->
+      </div>
+    </section>
 
-    <details class="letter">
-      <summary>📜 Carta 2 - Pensando en su belleza</summary>
-      <p>Acostado en mi cama,
-pensando en su belleza,
-recordando que me ama,
-es mi dulce fortaleza.
+    <section class="card" style="grid-column:1/-1">
+      <h2>Galería</h2>
+      <p class="subtitle">Pon tus fotos favoritas reemplazando las URLs.</p>
+      <div class="gallery" id="galeria">
+        <img src="https://images.unsplash.com/photo-1544211417-3b3952b9b3b4?q=80&w=1200&auto=format&fit=crop" alt="Nosotros 1" />
+        <img src="https://images.unsplash.com/photo-1545920875-1a1a1c85a879?q=80&w=1200&auto=format&fit=crop" alt="Nosotros 2" />
+        <img src="https://images.unsplash.com/photo-1520813792240-56fc4a3765a7?q=80&w=1200&auto=format&fit=crop" alt="Nosotros 3" />
+        <img src="https://images.unsplash.com/photo-1496302662116-35cc4f36df92?q=80&w=1200&auto=format&fit=crop" alt="Nosotros 4" />
+        <img src="https://images.unsplash.com/photo-1498429089284-41f8cf3ffd39?q=80&w=1200&auto=format&fit=crop" alt="Nosotros 5" />
+        <img src="https://images.unsplash.com/photo-1511935456800-4f77546b3cde?q=80&w=1200&auto=format&fit=crop" alt="Nosotros 6" />
+      </div>
+    </section>
 
-Su sonrisa es un destello,
-sus ojos, un misterio oscuro,
-y cuando miro en ellos,
-sé que este amor es puro.
+    <section class="card" style="grid-column:1/-1">
+      <h2>Una carta para ti</h2>
+      <div class="letter" id="carta">
+        Gracias por llegar a mi vida y hacer que todo sea más bonito. Eres mi lugar favorito y mi aventura preferida. Contigo, los días pasan más rápido y los recuerdos se quedan para siempre. 💫
+        <div class="signature">– <span id="nombreAutor">Tu Nombre</span></div>
+      </div>
+    </section>
+  </main>
 
-Ella es mi universo,
-mi calma y mi tormenta,
-lo digo en cada verso
-y mi alma lo sustenta.
-
-Su piel morena, tan suave,
-más que la arena al amanecer,
-y su boquita perfecta
-que me hace estremecer.
-
-Este poema aquí termina,
-pero no así nuestro amor,
-que es eterno, que ilumina
-en su abrazo acogedor.</p>
-    </details>
-
-    <details class="letter">
-      <summary>📜 Carta 3 - Nervioso con flores</summary>
-      <p>Nervioso con flores en mi mano  
-Las primeras que he dado  
-Te tomo de la mano  
-Con el corazón muy acelerado  
-
-Estabas tan hermosa  
-Mas que cualquier ramo de rosa  
-Brillando mas que cualquier estrella  
-Entre las flores la más bella  
-
-Diciéndole que la amo demasiado  
-Le entrego el ramo  
-Me tiene muy enamorado  
-
-Ay como la amo  
-Que el amor e encontrado  
-Y mi corazón con cariño ha tratado</p>
-    </details>
-
-    <details class="letter">
-      <summary>📜 Carta 4 - Tu piel morena</summary>
-      <p>Tu piel morena, un hechizo al tocar,  
-belleza imposible de explicar.  
-Tus besos mi mente desordenan,  
-como un huracán que todo renueva.  
-
-Tus ojos café, mi dulce brisa,  
-devuelven la fe con su suave caricia.  
-Un amor eterno, puro y sincero,  
-contigo a mi lado, todo es verdadero.  
-
-Tu sonrisa hermosa, aunque con timidez,  
-es mi mayor debilidad, lo sabes bien.  
-Qué ganas de verte vestida de blanco,  
-de amarte por siempre, sin miedo y sin llanto.  
-
-A veces la vida nos pone a prueba,  
-pero nuestro destino siempre nos lleva.  
-Sin importar lo que pueda pasar,  
-a tu lado, amor, yo siempre estaré.  
-
-No soy poeta, pero intento escribir  
-lo que en mi pecho no deja de latir.  
-Es un amor tan grande, tan inmenso,  
-que en un universo aún sería intenso.  
-
-Te gusta el morado, a mí me gustas tú,  
-y cada que me miras, me cubre el rubor.  
-Me gusta el rojo, ardiente y sincero,  
-como lo que siento cada vez que te veo.  
-
-Aprendí lo que amas, lo que te emociona,  
-escuché las canciones que a ti te apasionan.  
-Cada pequeño detalle en mi alma se queda,  
-porque tú eres mi paz y mi mayor estrella.  
-
-Estoy completamente enamorado,  
-de pies a cabeza, sin titubeos.  
-En riqueza o en pobreza,  
-contigo mi amor, hasta el fin de los tiempos.  
-
-¿Cómo seguir explicando lo que siento?  
-Tal vez con abrazos, con besos eternos.  
-Solo sé que en mi corazón está escrito:  
-quiero amarte siempre… y estar contigo.</p>
-    </details>
-
-    <details class="letter">
-      <summary>📜 Carta 5 - Eres Mi Razón de Existir</summary>
-      <p>Eres hermosa, más de lo que puedo contar,  
-tu pelo café cayendo, como un suspiro al pasar.  
-Tus ojos cafés, dos luceros que alumbra mi ser,  
-cada mirada tuya, me hace renacer.  
-
-Tu boca, dulce y perfecta, siempre quiero besar,  
-y tu risa, tan pura, no me canso de escuchar.  
-Cada día a tu lado es un regalo sin fin,  
-te amo más de lo que las palabras pueden decir.  
-
-Sé que a veces tenemos nuestros conflictos,  
-pero mi amor por ti sigue siendo infinito.  
-Aunque no sea el mejor con las palabras, lo sé,  
-cada verso que te dedico nace de mi fe.  
-
-Prometo seguir haciéndote versos con amor,  
-porque verte sonreír es mi mayor fervor.  
-Aunque mis palabras no siempre sean claras,  
-te aseguro que mi amor por ti nunca se para.  
-
-Mi amor por ti es incondicional, sin condición,  
-nada nos separará, es mi firme decisión.  
-En cada paso que demos, estaré a tu lado,  
-en este viaje juntos, siempre a tu lado, enamorado.  
-
-No importa lo que venga, te prometo que no te dejaré,  
-por nada en este mundo, a ti te perderé.  
-Juntos en cada lucha, en cada alegría,  
-mi amor por ti es eterno, cada día.  
-
-Y al final de este camino, lo que quiero es simple y real,  
-ser tu refugio, tu alegría, mi amor eterno, sin final.  
-Contigo quiero siempre estar, hasta el último aliento,  
-porque en tu amor encontré mi más puro sentimiento.</p>
-    </details>
-
-    <details class="letter">
-      <summary>📜 Carta 6 - Hasta el Último Latido</summary>
-      <p>Perdón, mi amor, por mis silencios,  
-por no mostrarte siempre lo que siento.  
-Pero dentro de mí, grita convencido:  
-contigo quiero estar… hasta el último latido.  
-
-Eres única, eres mi fortuna,  
-más brillante que mil lunas.  
-De pies a cabeza, eres perfección,  
-la dueña eterna de mi corazón.  
-
-Sé que a veces chocamos,  
-y sin querer nos lastimamos.  
-Pero este amor que por ti yo he tejido  
-es firme, es real, y está decidido.  
-
-No bastan palabras para mi perdón,  
-pero con el alma y el corazón  
-te pido que juntos encontremos razón,  
-antes que el orgullo apague la pasión.  
-
-Quiero caminar contigo cada día,  
-compartiendo risas, sueños y melodía.  
-De enero a diciembre, vida tras vida,  
-ser tú y yo, en cada amanecida.  
-
-Te prometo cuidarte y amarte,  
-nunca soltar ni olvidarte.  
-Aunque a veces no sepa bien demostrarlo,  
-te amo profundo… sin pensarlo.  
-
-Contigo quiero estar, sin medida,  
-desde este momento y toda la vida.  
-De la mano, siempre unidos,  
-contigo… hasta el último latido.</p>
-    </details>
-
-    <details class="letter">
-      <summary>📜 Carta 7 - Mi Refugio Eterno</summary>
-      <p>Te siento llegar,  
-mis lágrimas comienzan a brotar,  
-tus abrazos me saben guiar,  
-y todo mi amor te quiero entregar.  
-
-A veces te hago sentir mal,  
-y eso me duele de forma brutal.  
-Tú mereces solo cosas buenas,  
-sin ti, mi vida se queda en penas.  
-
-Te amo con todo mi ser,  
-pasaste de extraña a mi razón de creer.  
-Hoy eres el amor de mi vida,  
-y si me llamas, voy sin medida.  
-
-Tus ojos me miran con encanto,  
-y yo me pierdo en su manto.  
-Contigo sueño un eterno lazo,  
-aunque a veces sea un torpe payaso.  
-
-Tus abrazos cálidos son mi abrigo,  
-tus brazos, el refugio donde sigo.  
-Sin ti me siento perdido,  
-pero por este amor estoy decidido.  
-
-Tener hijos contigo es mi anhelo,  
-pero compartir la vida es mi mayor consuelo.  
-Tus besos, con pasión y emoción,  
-hacen volar toda mi imaginación.  
-
-Te prometo que, pase lo que pase,  
-aunque las discusiones amenacen,  
-te amaré sin condiciones, intensamente,  
-y te entregaré mi corazón eternamente.</p>
-    </details>
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-modal="true" role="dialog">
+    <img alt="Foto ampliada" id="lightboxImg" />
   </div>
 
-  <div class="section">
-    <h2>📸 Nuestros Momentos</h2>
-    <div class="gallery">
-      <!-- Genera las 12 imágenes automáticamente -->
-      <script>
-        for (let i = 1; i <= 12; i++) {
-          document.write(`<img src="fotos/${i}.jpg" alt="foto ${i}">`);
-        }
-      </script>
+  <!-- Editor -->
+  <aside class="editor" id="editor">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:6px">
+      <strong>Editar datos</strong>
+      <button class="btn" id="btnCerrarEditor">Cerrar</button>
     </div>
-  </div>
+    <label>Tu nombre</label>
+    <input id="inpAutor" placeholder="Tu nombre" />
+    <label>Nombre de tu pareja</label>
+    <input id="inpPareja" placeholder="Su nombre" />
+    <label>Fecha de inicio (aniversario, primer beso, etc.)</label>
+    <input id="inpFecha" type="date" />
+    <label>Texto de la carta</label>
+    <textarea id="inpCarta" placeholder="Escribe algo bonito…"></textarea>
+    <div style="display:flex; gap:10px; margin-top:10px">
+      <button class="btn" id="btnGuardar">Guardar</button>
+      <button class="btn" id="btnBorrar">Borrar datos</button>
+    </div>
+    <p class="subtitle" style="margin-top:8px">Se guarda solo en este navegador (LocalStorage). Para modo sorpresa, abre con <code>?sorpresa=1</code> para ocultar el botón Editar.</p>
+  </aside>
+
+  <footer>
+    Hecho con ❤️ por <span id="autorFooter">Tu Nombre</span> · <span id="anio"></span>
+  </footer>
+
+  <script>
+    // ====== UTIL ======
+    const $ = (sel) => document.querySelector(sel);
+    const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+
+    // ====== Estado / Persistencia ======
+    const LS_KEY = 'pagina-novia-v1';
+    const estado = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
+
+    // Valores por defecto
+    const datos = {
+      autor: estado.autor || 'Tu Nombre',
+      pareja: estado.pareja || 'Mi Amor',
+      fechaInicio: estado.fechaInicio || '2025-05-03', // hoy
+      carta: estado.carta || 'Gracias por llegar a mi vida y hacer que todo sea más bonito. Eres mi lugar favorito y mi aventura preferida. Contigo, los días pasan más rápido y los recuerdos se quedan para siempre. 💫',
+      timeline: estado.timeline || [
+        {fecha:'03 de mayo', detalle:'Empezamos a pololear 💘'},
+        {fecha:'Primera cita', detalle:'Ese día supe que algo especial empezaba 💞'},
+        {fecha:'Nuestra canción', detalle:'La pusiste y sonreíste. Desde entonces es nuestra.'},
+        {fecha:'Un día inolvidable', detalle:'Nos miramos y el mundo se detuvo.'},
+      ]
+    };
+
+    function guardar(){ localStorage.setItem(LS_KEY, JSON.stringify(datos)); }
+
+    // ====== Render ======
+    function formatearFechaHumana(iso){
+      try{
+        const d = new Date(iso + 'T00:00:00');
+        return d.toLocaleDateString(undefined, {year:'numeric', month:'long', day:'numeric'});
+      }catch{ return iso }
+    }
+
+    function render(){
+      $('#nombreAutor').textContent = datos.autor;
+      $('#autorFooter').textContent = datos.autor;
+      $('#nombrePareja').textContent = datos.pareja;
+      $('#fechaInicioHuman').textContent = formatearFechaHumana(datos.fechaInicio);
+      $('#carta').firstChild.nodeValue = datos.carta + ' ';
+      // timeline
+      const tl = $('#timeline'); tl.innerHTML='';
+      datos.timeline.forEach(it=>{
+        const el = document.createElement('div');
+        el.className='tl-item';
+        el.innerHTML = `<div class="dot"></div><h3>${it.fecha}</h3><p>${it.detalle}</p>`;
+        tl.appendChild(el);
+      });
+      actualizarCountdown();
+      $('#anio').textContent = new Date().getFullYear();
+    }
+
+    // ====== Countdown al próximo aniversario ======
+    function proximoAniversario(baseISO){
+      const base = new Date(baseISO + 'T00:00:00');
+      const ahora = new Date();
+      let objetivo = new Date(ahora.getFullYear(), base.getMonth(), base.getDate());
+      if(objetivo < ahora) objetivo.setFullYear(objetivo.getFullYear()+1);
+      return objetivo;
+    }
+
+    let tInt;
+    function actualizarCountdown(){
+      clearInterval(tInt);
+      function tick(){
+        const obj = proximoAniversario(datos.fechaInicio);
+        const diff = (obj - new Date());
+        if(diff <= 0){ renderConfetti(); }
+        const seg = Math.max(0, Math.floor(diff/1000));
+        const d = Math.floor(seg/86400);
+        const h = Math.floor((seg%86400)/3600);
+        const m = Math.floor((seg%3600)/60);
+        const s = Math.floor(seg%60);
+        $('#cd-dias').textContent=d; $('#cd-horas').textContent=h; $('#cd-min').textContent=m; $('#cd-sec').textContent=s;
+      }
+      tick();
+      tInt = setInterval(tick, 1000);
+    }
+
+    // ====== Lightbox simple ======
+    $$('#galeria img').forEach(img=>{
+      img.addEventListener('click', ()=>{
+        $('#lightboxImg').src = img.src;
+        $('#lightbox').style.display='grid';
+      });
+    });
+    $('#lightbox').addEventListener('click', (e)=>{
+      if(e.target.id==='lightbox' || e.target.id==='lightboxImg') $('#lightbox').style.display='none';
+    });
+
+    // ====== Editor ======
+    const editor = $('#editor');
+    $('#btnEditar').addEventListener('click', ()=> editor.style.display='block');
+    $('#btnCerrarEditor').addEventListener('click', ()=> editor.style.display='none');
+    $('#btnGuardar').addEventListener('click', ()=>{
+      datos.autor = $('#inpAutor').value || datos.autor;
+      datos.pareja = $('#inpPareja').value || datos.pareja;
+      datos.fechaInicio = $('#inpFecha').value || datos.fechaInicio;
+      datos.carta = $('#inpCarta').value || datos.carta;
+      guardar(); render(); editor.style.display='none';
+    });
+    $('#btnBorrar').addEventListener('click', ()=>{
+      localStorage.removeItem(LS_KEY); location.reload();
+    });
+
+    // Precargar inputs
+    function precargarInputs(){
+      $('#inpAutor').value = datos.autor;
+      $('#inpPareja').value = datos.pareja;
+      $('#inpFecha').value = datos.fechaInicio;
+      $('#inpCarta').value = datos.carta;
+    }
+
+    // Ocultar botón Editar en modo sorpresa (?sorpresa=1)
+    if(new URLSearchParams(location.search).get('sorpresa')==='1'){
+      $('#btnEditar').style.display='none';
+    }
+
+    // ====== Corazones flotantes + confetti ======
+    const floaters = $('#floaters');
+    function crearFloater(){
+      const el = document.createElement('div');
+      el.className = 'floater';
+      const x = Math.random()*100; const dur = 8 + Math.random()*6; const size = 8 + Math.random()*14;
+      el.style.left = x+'vw';
+      el.style.bottom = '-20px';
+      el.style.width = el.style.height = size+'px';
+      el.style.animation = `rise ${dur}s linear forwards`;
+      floaters.appendChild(el);
+      setTimeout(()=> el.remove(), dur*1000);
+    }
+    setInterval(()=>{ if(document.hidden) return; if(Math.random()<.45) crearFloater(); }, 600);
+
+    function renderConfetti(){
+      const n=80;
+      for(let i=0;i<n;i++){
+        const p=document.createElement('div');
+        p.style.position='fixed'; p.style.left=Math.random()*100+'vw'; p.style.top='-10px';
+        p.style.width=p.style.height= (6+Math.random()*6)+'px';
+        p.style.background = i%2? 'var(--brand)' : 'var(--accent)';
+        p.style.opacity=.9; p.style.transform=`rotate(${Math.random()*360}deg)`;
+        p.style.transition='transform 1.2s ease-out, top 1.2s ease-out, opacity 1.2s ease-out';
+        document.body.appendChild(p);
+        requestAnimationFrame(()=>{
+          p.style.top = '110vh'; p.style.transform = `translateY(0) rotate(${360+Math.random()*360}deg)`; p.style.opacity=.95;
+        });
+        setTimeout(()=> p.remove(), 1400);
+      }
+    }
+    $('#btnConfetti').addEventListener('click', renderConfetti);
+
+    // ====== Init ======
+    render(); precargarInputs();
+  </script>
 </body>
 </html>
